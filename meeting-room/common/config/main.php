@@ -5,7 +5,8 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'name' => 'smartMEETING',
+    'name' => 'smartMeeting',
+    'language' => 'th_TH',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

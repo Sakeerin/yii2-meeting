@@ -37,6 +37,14 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
+    public function attributeLabels(){
+        return [
+            'username' => 'Username',
+            'password_hash' => 'Password',
+            'email' => 'อีเมลล์'
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -53,6 +61,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username','password_hash','email'],'required'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
