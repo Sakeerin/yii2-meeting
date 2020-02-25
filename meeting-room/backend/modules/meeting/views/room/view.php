@@ -16,20 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <h3 class="box-title"><i class="fa fa-home"></i> <?= Html::encode($this->title) ?></h3>
     </div>
     <div class="box-body">
-    <p>
-        <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('ลบ ', ['delete', 'id' => $model->id], [
+        <p>
+            <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('ลบ ', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
-   <div class="text-center">
+        </p>
+        <div class="text-center">
             <?= Html::img('uploads/room/'.$model->photo,['class' => 'thumbnail img-responsive','width' => 250]) ?>
-   </div>
-    <?= DetailView::widget([
+        </div>
+        <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
            // 'id',
