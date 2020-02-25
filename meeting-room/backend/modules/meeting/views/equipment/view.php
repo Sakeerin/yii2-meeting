@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\modules\meeting\models\Equipment */
 
 $this->title = $model->equipment;
-$this->params['breadcrumbs'][] = ['label' => 'Equipments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'อุปกรณ์', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

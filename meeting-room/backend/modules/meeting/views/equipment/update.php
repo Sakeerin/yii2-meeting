@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\modules\meeting\models\Equipment */
 
 $this->title = 'แก้ไข: ' . $model->equipment;
-$this->params['breadcrumbs'][] = ['label' => 'Equipments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'อุปกรณ์', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->equipment, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'แก้ไข';
 ?>
