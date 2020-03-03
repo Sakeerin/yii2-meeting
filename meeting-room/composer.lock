@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63eb5d4f58c82a79204ddedfe60af846",
+    "content-hash": "e7cced99227498053eee8d20c7ff2de5",
     "packages": [
         {
             "name": "2amigos/yii2-date-time-picker-widget",
@@ -134,33 +134,48 @@
         },
         {
             "name": "bower-asset/fullcalendar",
-            "version": "v4.4.1",
+            "version": "v3.9.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:fullcalendar/fullcalendar.git",
-                "reference": "194eb1fb44e344875dd52b5a005e27f4b042b6a4"
+                "reference": "3ddb3c8d1461c6b841aed3487ba07d8ba338adb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fullcalendar/fullcalendar/zipball/194eb1fb44e344875dd52b5a005e27f4b042b6a4",
-                "reference": "194eb1fb44e344875dd52b5a005e27f4b042b6a4"
+                "url": "https://api.github.com/repos/fullcalendar/fullcalendar/zipball/3ddb3c8d1461c6b841aed3487ba07d8ba338adb6",
+                "reference": "3ddb3c8d1461c6b841aed3487ba07d8ba338adb6"
             },
-            "type": "bower-asset"
+            "require": {
+                "bower-asset/jquery": ">=2,<4.0",
+                "bower-asset/moment": ">=2.20.1,<3.0.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/fullcalendar-scheduler",
-            "version": "v4.4.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fullcalendar/fullcalendar-scheduler.git",
-                "reference": "681b108127745047dbb24d550e753d42207132e3"
+                "reference": "b2c545d12c7b26492610777ee7fd7108d4dd057c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fullcalendar/fullcalendar-scheduler/zipball/681b108127745047dbb24d550e753d42207132e3",
-                "reference": "681b108127745047dbb24d550e753d42207132e3"
+                "url": "https://api.github.com/repos/fullcalendar/fullcalendar-scheduler/zipball/b2c545d12c7b26492610777ee7fd7108d4dd057c",
+                "reference": "b2c545d12c7b26492610777ee7fd7108d4dd057c"
             },
-            "type": "bower-asset"
+            "require": {
+                "bower-asset/fullcalendar": "~3.9.0",
+                "bower-asset/jquery": ">=2,<4.0",
+                "bower-asset/moment": ">=2.20.1,<3.0.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "SEE LICENSE IN LICENSE.md"
+            ]
         },
         {
             "name": "bower-asset/inputmask",
@@ -216,6 +231,24 @@
             },
             "require": {
                 "bower-asset/jquery": ">=1.6"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/moment",
+            "version": "2.24.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:moment/moment.git",
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/96d0d6791ab495859d09a868803d31a55c917de1",
+                "reference": "96d0d6791ab495859d09a868803d31a55c917de1"
             },
             "type": "bower-asset",
             "license": [
@@ -639,21 +672,21 @@
         },
         {
             "name": "philippfrenzel/yii2fullcalendar",
-            "version": "4.0.2",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/philippfrenzel/yii2fullcalendar.git",
-                "reference": "53c8b2f524c5f5d85bd30f6ed7ba34b563479782"
+                "reference": "0b56a80486fa01b874dda5072ffb9b2cf06210ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philippfrenzel/yii2fullcalendar/zipball/53c8b2f524c5f5d85bd30f6ed7ba34b563479782",
-                "reference": "53c8b2f524c5f5d85bd30f6ed7ba34b563479782",
+                "url": "https://api.github.com/repos/philippfrenzel/yii2fullcalendar/zipball/0b56a80486fa01b874dda5072ffb9b2cf06210ed",
+                "reference": "0b56a80486fa01b874dda5072ffb9b2cf06210ed",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/fullcalendar": "^4.0.2@stable",
-                "bower-asset/fullcalendar-scheduler": "^4.0.2@stable",
+                "bower-asset/fullcalendar": "^3.9.0@stable",
+                "bower-asset/fullcalendar-scheduler": "^1.9.2@stable",
                 "yiisoft/yii2": "*",
                 "yiisoft/yii2-jui": "*"
             },
@@ -685,7 +718,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2019-04-17T13:42:59+00:00"
+            "time": "2018-05-04T09:06:24+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
