@@ -1,9 +1,61 @@
 <?php
-/* @var $this yii\web\View */
+use yii\grid\GridView;
 ?>
-<h1>report/report3</h1>
-
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+<h3>รายงานการจองห้องประชุมแบ่งตามรายเดือน</h3>
+<?=GridView::widget([
+    'dataProvider' => $dataProvider,
+    'columns' =>[
+        [
+            'attribute' => 'name',
+            'label' => 'ห้องประชุม'
+        ],
+        [
+            'attribute' => 'm1',
+            'label' => 'ม.ค.'
+        ],
+        [
+            'attribute' => 'm2',
+            'label' => 'ก.พ.'
+        ],
+        [
+            'attribute' => 'm3',
+            'label' => 'มิ.ย.'
+        ],
+        [
+            'attribute' => 'm4',
+            'label' => 'เม.ย.'
+        ],
+        [
+            'attribute' => 'm5',
+            'label' => 'พ.ค.'
+        ],
+        [
+            'attribute' => 'm6',
+            'label' => 'มิ.ย.'
+        ],
+        [
+            'attribute' => 'm7',
+            'label' => 'ก.ค.'
+        ],
+        [
+            'attribute' => 'm8',
+            'label' => 'ส.ค.'
+        ],
+        [
+            'attribute' => 'm9',
+            'label' => 'ก.ย.'
+        ],
+        [
+            'attribute' => 'm10',
+            'label' => 'ต.ค.'
+        ],
+        [
+            'attribute' => 'm11',
+            'label' => 'พ.ย.'
+        ],
+        [
+            'attribute' => 'm12',
+            'label' => 'ธ.ค.'
+        ],
+    ]
+])?>

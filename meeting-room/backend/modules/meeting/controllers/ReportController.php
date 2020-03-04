@@ -4,6 +4,7 @@ namespace backend\modules\meeting\controllers;
 
 use Yii;
 use yii\data\ArrayDataProvider;
+use kartik\mpdf\Pdf;
 
 class ReportController extends \yii\web\Controller
 {
@@ -99,7 +100,65 @@ class ReportController extends \yii\web\Controller
 
     public function actionReport3()
     {
-        return $this->render('report3');
+        $y = date("Y",time());
+        $sql = "
+            SELECT r.name,
+            COUNT(IF(MONTH(m.date_start)=1,m.id,NULL)) AS m1,
+            COUNT(IF(MONTH(m.date_start)=2,m.id,NULL)) AS m2,
+            COUNT(IF(MONTH(m.date_start)=3,m.id,NULL)) AS m3,
+            COUNT(IF(MONTH(m.date_start)=4,m.id,NULL)) AS m4,
+            COUNT(IF(MONTH(m.date_start)=5,m.id,NULL)) AS m5,
+            COUNT(IF(MONTH(m.date_start)=6,m.id,NULL)) AS m6,
+            COUNT(IF(MONTH(m.date_start)=7,m.id,NULL)) AS m7,
+            COUNT(IF(MONTH(m.date_start)=8,m.id,NULL)) AS m8,
+            COUNT(IF(MONTH(m.date_start)=9,m.id,NULL)) AS m9,
+            COUNT(IF(MONTH(m.date_start)=10,m.id,NULL)) AS m10,
+            COUNT(IF(MONTH(m.date_start)=11,m.id,NULL)) AS m11,
+            COUNT(IF(MONTH(m.date_start)=12,m.id,NULL)) AS m12
+            FROM meeting m
+            LEFT JOIN room r ON r.id = m.room_id
+            WHERE YEAR(m.date_start) = '".$y."'
+            GROUP BY r.id
+            ";
+        $data = Yii::$app->db->createCommand($sql)->queryAll();
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $data,
+            /* 'sort' => [
+                'attributes' => ['name','m1','m2','m3','m4','m5','m6','m7','m8','m9','m10','m11','m12',]
+            ]*/
+        ]);
+        
+        $content = $this->renderPartial('report3',['dataProvider' => $dataProvider]);
+    
+        // setup kartik\mpdf\Pdf component
+        $pdf = new Pdf([
+            // set to use core fonts only
+            'mode' => Pdf::MODE_UTF8, 
+            // A4 paper format
+            'format' => Pdf::FORMAT_A4, 
+            // portrait orientation
+            'orientation' => Pdf::ORIENT_PORTRAIT, 
+            // stream to browser inline
+            'destination' => Pdf::DEST_BROWSER, 
+            // your html content input
+            'content' => $content,  
+            // format content from your own css file if needed or use the
+            // enhanced bootstrap css built by Krajee for mPDF formatting 
+            'cssFile' => '@backend/web/css/kv-mpdf-bootstrap.css',
+            // any css to be embedded if required
+            'cssInline' => '.kv-heading-1{font-size:18px}', 
+            // set mPDF properties on the fly
+            'options' => ['title' => 'รายงานการจองห้องประชุมแบ่งตามรายเดือน'],
+            // call mPDF methods on the fly
+            'methods' => [ 
+                'SetHeader'=>['รายงานการจองห้องประชุมแบ่งตามรายเดือน'], 
+                'SetFooter'=>['{PAGENO}'],
+            ]
+        ]);
+    
+    // return the pdf output as per the destination setting
+    return $pdf->render(); 
     }
 
     public function actionReport4()
