@@ -11,5 +11,8 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'meeting' => [
+            'class' => 'backend\modules\meeting\components\Meeting',
+        ],
     ],
 ];

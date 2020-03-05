@@ -20,9 +20,6 @@ return [
         ], 
     ],
     'components' => [
-        'meeting' => [
-            'class' => 'backend\modules\meeting\components\Meeting',
-        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
