@@ -41,7 +41,7 @@ use yii\helpers\Html;
                                 'url' => '#',
                                 'items' => [
                                     ['label' => 'รายงาน1', 'icon' => 'bar-chart', 'url' => ['/meeting/report/report1'],],
-                                    ['label' => 'รายงาน2', 'icon' => 'bar-chart', 'url' => ['/meeting/report/report2'],],
+                                    ['label' => 'รายงาน2', 'icon' => 'line-chart', 'url' => ['/meeting/report/report2'],],
                                     ['label' => 'รายงาน3', 'icon' => 'file-pdf-o', 'url' => ['/meeting/report/report3'],],
                                 ],
                             ],

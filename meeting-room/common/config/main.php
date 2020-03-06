@@ -14,5 +14,8 @@ return [
         'meeting' => [
             'class' => 'backend\modules\meeting\components\Meeting',
         ],
+        // 'authManager' => [
+        //     'class' => 'yii\rbac\DbManager',
+        // ],
     ],
 ];
