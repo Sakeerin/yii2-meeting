@@ -25,10 +25,10 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
-        ],
+        // 'session' => [
+        //     // this is the name of the session cookie used for login on the frontend
+        //     'name' => 'advanced-frontend',
+        // ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -40,6 +40,26 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'urlManagerBackend' => [
+            'class' => 'yii\web\UrlManager',
+            'baseUrl' => 'http://localhost/yii2/project/meeting-room/backend/web',
+            'hostInfo' => 'http://localhost/yii2/project/meeting-room/backend/web/index.php?r=site/login',
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'encryption' => 'ssl',
+                'host' => 'smtp.gmail.com',
+                'port' => '465',
+                'username' => 'sakeerin.kh@gmail.com',
+                'password' => 'Sakeerin1994',
+            ],             
         ],
         /*
         'urlManager' => [

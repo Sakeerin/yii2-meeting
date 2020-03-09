@@ -50,6 +50,22 @@ $fieldOptions2 = [
             <!-- /.col -->
         </div>
 
+        <div class="row">
+            <div class="col-xs-12">
+                If you forgot your password you can
+                <?= Html::a('reset it', Yii::$app->urlManagerFrontend->createUrl(['site/request-password-reset'])) ?>.
+            </div>
+            <!-- /.col -->
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                If you want back to home page
+                <?= Html::a('click it', Yii::$app->urlManagerFrontend->createUrl(['site/index'])) ?>.
+            </div>
+            <!-- /.col -->
+        </div>
+
 
         <?php ActiveForm::end(); ?>
 

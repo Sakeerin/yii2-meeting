@@ -28,10 +28,10 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
-        ],
+        // 'session' => [
+        //     // this is the name of the session cookie used for login on the backend
+        //     'name' => 'advanced-backend',
+        // ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -51,6 +51,18 @@ return [
                 ],
             ],
        ],
+       'urlManager' => [
+        'class' => 'yii\web\urlManager',
+        'enablePrettyUrl' => false,
+        'showScriptName' => true,
+        ],
+        'urlManagerFrontend' => [
+                'class' => 'yii\web\urlManager',
+                'baseUrl' => 'http://localhost/yii2/project/meeting-room/frontend/web',
+                'scriptUrl'=>'http://localhost/yii2/project/meeting-room/frontend/web/index.php',
+                'enablePrettyUrl' => false,
+                'showScriptName' => true,
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

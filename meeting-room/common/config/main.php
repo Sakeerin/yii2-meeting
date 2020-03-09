@@ -14,6 +14,11 @@ return [
         'meeting' => [
             'class' => 'backend\modules\meeting\components\Meeting',
         ],
+        // 'urlManager' => [
+        //     'class' => 'yii\web\UrlManager',
+        //     'enablePrettyUrl' => false,
+        //     'showScriptName' => true, 
+        // ],
         // 'authManager' => [
         //     'class' => 'yii\rbac\DbManager',
         // ],
