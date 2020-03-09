@@ -102,7 +102,8 @@ class PersonController extends Controller
         $model = $this->findModel($id);
         $user = $model->user;
         $oldPass = $user->password_hash; 
-
+        $oldAvatar = $model->photo;
+        
         if ($model->load(Yii::$app->request->post()) && $user->load(Yii::$app->request->post())) {
             if ($oldPass != $user->password_hash) { //เปลี่ยนรหัสผ่าย
                 $user->password_hash = Yii::$app->security->generatePasswordHash($user->password_hash);
@@ -110,10 +111,18 @@ class PersonController extends Controller
             if ($user->save()) {
                 $file = UploadedFile::getInstance($model,'person_img');
                 if (isset($file->size) && $file->size !==0) { //มีการเปลี่ยนรูป
+                    $model->photo = $user->id.'.'.$file->extension;
                     $file->saveAs('uploads/person/'.$user->id.'.'.$file->extension);
+                    if ($oldAvatar != 0) {
+                        @unlink('uploads/person/'.$oldAvatar);
+                    }
                 }
                 $model->save();
             }
+
+            // echo $oldAvatar;
+            // echo $model->photo;
+            // die();
             return $this->redirect(['view', 'id' => $model->user_id]);
         }
 

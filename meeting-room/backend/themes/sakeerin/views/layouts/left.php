@@ -8,7 +8,7 @@ use yii\helpers\Html;
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <?= Html::img('uploads/person/'.Yii::$app->user->identity->person->photo,['class' => 'img-circle', 'alt' => Yii::$app->user->identity->person->firstname.' '.Yii::$app->user->identity->person->lastname, 'width' => 150,'height' => 200])?>
+                <?= Html::img('uploads/person/'.Yii::$app->user->identity->person->photo,['class' => 'img-circle', 'alt' => Yii::$app->user->identity->person->firstname.' '.Yii::$app->user->identity->person->lastname, ])?>
             </div>
             <div class="pull-left info">
                 <p>
@@ -62,17 +62,8 @@ use yii\helpers\Html;
                         'url' => '#',
                         'items' => [
                             ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
-                            ['label' => 'จองห้องประชุม', 'icon' => 'user', 'url' => ['/personal/person/create'],],
-                            ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],
-                            [
-                                'label' => 'ข้อมูลพื้นฐาน',
-                                'icon' => 'cogs',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'ฝ่าย', 'icon' => 'bar-chart', 'url' => ['/personal/department/index'],],
-                                ],
-                            ],
-                            
+                            ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
+                            ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],        
                         ],
                     ],
                 ],

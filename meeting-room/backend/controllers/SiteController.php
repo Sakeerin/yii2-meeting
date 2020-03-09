@@ -79,6 +79,7 @@ class SiteController extends Controller
             return $this->goBack();
         } else {
             $model->password = '';
+            Yii::$app->session->setFlash('success', 'คุณได้เข้าสู่ระบบเรียนร้อยแล้วครับ...');
 
             return $this->render('login', [
                 'model' => $model,
