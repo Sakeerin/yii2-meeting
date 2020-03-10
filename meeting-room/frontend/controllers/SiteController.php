@@ -14,6 +14,10 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\User;
+use yii\web\UploadedFile;
+use common\models\Person;
+use backend\modules\personal\models\PersonSearch;
 
 /**
  * Site controller
@@ -152,14 +156,34 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+        $model = new Person();
+        $user = new User();
+
+        if ($model->load(Yii::$app->request->post()) && $user->load(Yii::$app->request->post())) {
+            $user->password_hash = Yii::$app->security->generatePasswordHash($user->password_hash);
+            $user->auth_key = Yii::$app->security->generateRandomString();
+            $user->status = 10;
+            if($user->save()){
+                $file = UploadedFile::getInstance($model,'person_img');
+                if ($file->size != 0) {
+                    $model->photo = $user->id.'.'.$file->extension;
+                    $file->saveAs(Yii::getAlias('@backend').'/web/uploads/person/'.$user->id.'.'.$file->extension);
+                }
+                $model->user_id = $user->id;
+                $model->save();
+            }
+            Yii::$app->session->setFlash('success', 'Thank you for registration.');
             return $this->goHome();
         }
+        // $model = new SignupForm();
+        // if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+        //     Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+        //     return $this->goHome();
+        // }
 
         return $this->render('signup', [
             'model' => $model,
+            'user' => $user,
         ]);
     }
 

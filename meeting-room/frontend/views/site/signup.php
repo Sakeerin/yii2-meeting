@@ -6,6 +6,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use common\models\Department;
+use yii\helpers\ArrayHelper;
 
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,17 +19,31 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+            <?php $form = ActiveForm::begin([
+                'options' => ['enctype' => 'multipart/form-data']
+            ]); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($user, 'username')->textInput() ?>
 
-                <?= $form->field($model, 'email') ?>
+            <?= $form->field($user, 'password_hash')->textInput() ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($user, 'email')->textInput() ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
+            <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'lastname')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'person_img')->fileInput() ?>
+
+            <?= $form->field($model, 'address')->textarea(['rows' => 6]) ?>
+
+            <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'department_id')->dropDownList(ArrayHelper::map(Department::find()->all(),'id','department')) ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+            </div>
 
             <?php ActiveForm::end(); ?>
         </div>
