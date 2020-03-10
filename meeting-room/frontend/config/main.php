@@ -54,9 +54,9 @@ return [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'encryption' => 'ssl',
+                'encryption' => 'tls',
                 'host' => 'smtp.gmail.com',
-                'port' => '465',
+                'port' => '587',
                 'username' => 'sakeerin.kh@gmail.com',
                 'password' => 'Sakeerin1994',
             ],             
