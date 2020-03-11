@@ -37,7 +37,7 @@ class RbacController extends Controller
         $auth->add($person_person_delete);
 
         $person_person_view = $auth->createPermission('personal/person/view');
-        $person_person_view->description = 'ดูบุคคล';
+        $person_person_view->description = 'ดูรายละเอียดบุคคล';
         $auth->add($person_person_view);
 
 
@@ -71,7 +71,7 @@ class RbacController extends Controller
 
         //meeting จัดการจองห้องประชุม
         $meeting_meeting_index = $auth->createPermission('meeting/meeting/index');
-        $meeting_meeting_index->description = 'รายการจองห้องประชุม';
+        $meeting_meeting_index->description = 'รายการการจองห้องประชุม';
         $auth->add($meeting_meeting_index);
 
         $meeting_meeting_create = $auth->createPermission('meeting/meeting/create');
@@ -87,47 +87,47 @@ class RbacController extends Controller
         $auth->add($meeting_meeting_delete);
 
         $meeting_meeting_view = $auth->createPermission('meeting/meeting/view');
-        $meeting_meeting_view->description = 'ดูการจองห้องประชุม';
+        $meeting_meeting_view->description = 'ดูรายละเอียดการจองห้องประชุม';
         $auth->add($meeting_meeting_view);
 
 
 
         //room ห้อง
         $meeting_room_index = $auth->createPermission('meeting/room/index');
-        $meeting_room_index->description = 'รายการห้อง';
+        $meeting_room_index->description = 'รายการห้องประชุม';
         $auth->add($meeting_room_index);
 
         $meeting_room_create = $auth->createPermission('meeting/room/create');
-        $meeting_room_create->description = 'เพิ่มห้อง';
+        $meeting_room_create->description = 'เพิ่มห้องประชุม';
         $auth->add($meeting_room_create);
 
         $meeting_room_update = $auth->createPermission('meeting/room/update');
-        $meeting_room_update->description = 'แก้ไขห้อง';
+        $meeting_room_update->description = 'แก้ไขห้องประชุม';
         $auth->add($meeting_room_update);
 
         $meeting_room_delete = $auth->createPermission('meeting/room/delete');
-        $meeting_room_delete->description = 'ลบห้อง';
+        $meeting_room_delete->description = 'ลบห้องประชุม';
         $auth->add($meeting_room_delete);
 
         $meeting_room_view = $auth->createPermission('meeting/room/view');
-        $meeting_room_view->description = 'ดูห้อง';
+        $meeting_room_view->description = 'ดูห้องประชุม';
         $auth->add($meeting_room_view);
 
 
         //report รายงาน
         $meeting_report_report1 = $auth->createPermission('meeting/report/report1');
-        $meeting_report_report1->description = 'รายงาน1';
+        $meeting_report_report1->description = 'กราฟสรุปการจองห้องประชุมแบ่งตามห้อง';
         $auth->add($meeting_report_report1);
 
         $meeting_report_report2 = $auth->createPermission('meeting/report/report2');
-        $meeting_report_report2->description = 'รายงาน2';
+        $meeting_report_report2->description = 'กราฟรายงานสรุปการจองห้องประชุมแบ่งตามเดือน';
         $auth->add($meeting_report_report2);
 
         $meeting_report_report3 = $auth->createPermission('meeting/report/report3');
-        $meeting_report_report3->description = 'รายงาน3';
+        $meeting_report_report3->description = 'ตารางรายงานการจองห้องประชุมแบ่งรายเดือน';
         $auth->add($meeting_report_report3);
 
-        echo 'Create Permission success';
+        echo 'Create Permission success!';
 
     }
 
@@ -174,8 +174,38 @@ class RbacController extends Controller
 
         //assign role
         $user = $auth->createRole('user');
+        $auth->add($user);
+        $auth->addChild($user,$person_default_index); //ปฏิทิน
+        $auth->addChild($user,$person_person_index); //บุคคล
+        // $auth->addChild($user,$person_person_update);
+        $auth->addChild($user,$person_person_view);
+        $auth->addChild($user,$meeting_meeting_index); //การจอง
+        $auth->addChild($user,$meeting_meeting_create);
+        // $auth->addChild($user,$meeting_meeting_update);
+        // $auth->addChild($user,$meeting_meeting_delete);
+        $auth->addChild($user,$meeting_meeting_view);
+        $auth->addChild($user,$meeting_report_report1); //รายงาน 
+        $auth->addChild($user,$meeting_report_report2);
+        $auth->addChild($user,$meeting_report_report3);
 
         $admin = $auth->createRole('admin');
+        $auth->add($admin);
+        $auth->addChild($admin,$person_person_create); //บุคคล
+        $auth->addChild($user,$person_person_update);
+        $auth->addChild($admin,$person_person_delete);
+        $auth->addChild($user,$meeting_meeting_update); //การจอง
+        $auth->addChild($user,$meeting_meeting_delete);
+        $auth->addChild($admin,$meeting_equipment_index); //อุปกรณ์
+        $auth->addChild($admin,$meeting_equipment_create);
+        $auth->addChild($admin,$meeting_equipment_update);
+        $auth->addChild($admin,$meeting_equipment_delete);
+        $auth->addChild($admin,$meeting_equipment_view);
+        $auth->addChild($admin,$meeting_room_index); //ห้อง
+        $auth->addChild($admin,$meeting_room_create);
+        $auth->addChild($admin,$meeting_room_update);
+        $auth->addChild($admin,$meeting_room_delete);
+        $auth->addChild($admin,$meeting_room_view);
+        $auth->addChild($admin,$user);
 
         echo 'Create Role success!';
     }
@@ -183,16 +213,38 @@ class RbacController extends Controller
     public function actionCreateAssignment()
     {
         $auth = Yii::$app->authManager;
-
         $user = $auth->createRole('user');
         $admin = $auth->createRole('admin');
+
+        $auth->assign($admin,1);
+        $auth->assign($user,2);
+
 
         echo 'Create Assignment success!';
     }
 
     public function actionCreateRule()
     {
-        # code...
+        $auth = Yii::$app->authManager;
+
+        $rule = new \common\components\UserRule();
+        $auth->add($rule);
+
+        $updateOwnPost = $auth->createPermission('updateOwnPost');
+        $updateOwnPost->description = 'ปรับปรุงโพสของตัวเอง';
+        $updateOwnPost->ruleName = $rule->name;
+        $auth->add($updateOwnPost);
+
+        $person_person_update = $auth->createPermission('personal/person/update');
+        $meeting_meeting_update = $auth->createPermission('meeting/meeting/update');
+        $meeting_meeting_delete = $auth->createPermission('meeting/meeting/delete');
+
+        $auth->addChild($updateOwnPost,$person_person_update,$meeting_meeting_update,$meeting_meeting_delete);
+
+        $user = $auth->createPermission('user');
+        $auth->add($user,$updateOwnPost);
+        
+        echo 'Create updateOwnPost success!';
     }
 }
 ?>

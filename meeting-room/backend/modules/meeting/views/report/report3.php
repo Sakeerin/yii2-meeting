@@ -1,7 +1,7 @@
 <?php
 use yii\grid\GridView;
 ?>
-<h3>รายงานการจองห้องประชุมแบ่งตามรายเดือน</h3>
+<h3>รายงานการจองห้องประชุมแบ่งรายเดือน</h3>
 <?=GridView::widget([
     'dataProvider' => $dataProvider,
     'columns' =>[
