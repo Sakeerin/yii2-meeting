@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use common\models\User;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl; 
+use yii\web\ForbiddenHttpException;
 
 /**
  * PersonController implements the CRUD actions for Person model.
@@ -43,6 +44,8 @@ class PersonController extends Controller
                             $route = "$module/$controller/$action";
                             if (Yii::$app->user->can($route)) {
                                 return true;
+                            }else{
+                                Yii::$app->session->setFlash('warning', 'You do not have permission to use this page.');
                             }
                         }
                     ]
