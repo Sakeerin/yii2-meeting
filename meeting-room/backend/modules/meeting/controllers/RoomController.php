@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl; 
 
 /**
  * RoomController implements the CRUD actions for Room model.
@@ -27,6 +28,25 @@ class RoomController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule,$action){
+                            $module = Yii::$app->controller->module->id;
+                            $controller = Yii::$app->controller->id;
+                            $action = Yii::$app->controller->action->id;
+
+                            $route = "$module/$controller/$action";
+                            if (Yii::$app->user->can($route)) {
+                                return true;
+                            }
+                        }
+                    ]
+                ]
+            ]
         ];
     }
 

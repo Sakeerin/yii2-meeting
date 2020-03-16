@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\User;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl; 
 
 /**
  * PersonController implements the CRUD actions for Person model.
@@ -28,6 +29,25 @@ class PersonController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule,$action){
+                            $module = Yii::$app->controller->module->id;
+                            $controller = Yii::$app->controller->id;
+                            $action = Yii::$app->controller->action->id;
+
+                            $route = "$module/$controller/$action";
+                            if (Yii::$app->user->can($route)) {
+                                return true;
+                            }
+                        }
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -154,6 +174,15 @@ class PersonController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
+    {
+        if (($model = Person::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function findUserModel($id)
     {
         if (($model = Person::findOne($id)) !== null) {
             return $model;

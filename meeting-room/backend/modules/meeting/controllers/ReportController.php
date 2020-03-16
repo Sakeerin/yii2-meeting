@@ -5,9 +5,36 @@ namespace backend\modules\meeting\controllers;
 use Yii;
 use yii\data\ArrayDataProvider;
 use kartik\mpdf\Pdf;
+use yii\filters\AccessControl; 
 
 class ReportController extends \yii\web\Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule,$action){
+                            $module = Yii::$app->controller->module->id;
+                            $controller = Yii::$app->controller->id;
+                            $action = Yii::$app->controller->action->id;
+
+                            $route = "$module/$controller/$action";
+                            if (Yii::$app->user->can($route)) {
+                                return true;
+                            }
+                        }
+                    ]
+                ]
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

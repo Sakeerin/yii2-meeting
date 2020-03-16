@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use backend\modules\meeting\models\Equipment;
 use yii\data\ArrayDataProvider;
 use backend\modules\meeting\models\Uses;
+use yii\filters\AccessControl; 
 
 /**
  * MeetingController implements the CRUD actions for Meeting model.
@@ -29,6 +30,25 @@ class MeetingController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule,$action){
+                            $module = Yii::$app->controller->module->id;
+                            $controller = Yii::$app->controller->id;
+                            $action = Yii::$app->controller->action->id;
+
+                            $route = "$module/$controller/$action";
+                            if (Yii::$app->user->can($route)) {
+                                return true;
+                            }
+                        }
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -164,6 +184,15 @@ class MeetingController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
+    {
+        if (($model = Meeting::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function findUserModel($id)
     {
         if (($model = Meeting::findOne($id)) !== null) {
             return $model;

@@ -8,7 +8,7 @@ class RbacController extends Controller
 {
     public function actionHello()
     {
-        
+        echo 'Hello Sakeerin!';
     }
     public function actionCreatePermission()
     {
@@ -191,10 +191,10 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin,$person_person_create); //บุคคล
-        $auth->addChild($user,$person_person_update);
+        $auth->addChild($admin,$person_person_update);
         $auth->addChild($admin,$person_person_delete);
-        $auth->addChild($user,$meeting_meeting_update); //การจอง
-        $auth->addChild($user,$meeting_meeting_delete);
+        $auth->addChild($admin,$meeting_meeting_update); //การจอง
+        $auth->addChild($admin,$meeting_meeting_delete);
         $auth->addChild($admin,$meeting_equipment_index); //อุปกรณ์
         $auth->addChild($admin,$meeting_equipment_create);
         $auth->addChild($admin,$meeting_equipment_update);
@@ -216,8 +216,9 @@ class RbacController extends Controller
         $user = $auth->createRole('user');
         $admin = $auth->createRole('admin');
 
-        $auth->assign($admin,1);
         $auth->assign($user,2);
+        $auth->assign($admin,1);
+        $auth->assign($user,3);
 
 
         echo 'Create Assignment success!';
@@ -239,10 +240,12 @@ class RbacController extends Controller
         $meeting_meeting_update = $auth->createPermission('meeting/meeting/update');
         $meeting_meeting_delete = $auth->createPermission('meeting/meeting/delete');
 
-        $auth->addChild($updateOwnPost,$person_person_update,$meeting_meeting_update,$meeting_meeting_delete);
+        $auth->addChild($updateOwnPost,$person_person_update);
+        $auth->addChild($updateOwnPost,$meeting_meeting_update);
+        $auth->addChild($updateOwnPost,$meeting_meeting_delete);
 
         $user = $auth->createPermission('user');
-        $auth->add($user,$updateOwnPost);
+        $auth->addChild($user,$updateOwnPost);
         
         echo 'Create updateOwnPost success!';
     }
