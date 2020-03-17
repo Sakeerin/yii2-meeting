@@ -22,6 +22,17 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($user, 'email')->textInput() ?>
 
+    <?php $auth = \Yii::$app->authManager;?>
+    <?php if (!$model->isNewRecord) { ?>
+    <?php  if ($user->status == 9) { ?>
+    <?php if($auth->getRole('admin')) {?>
+    <?= $form->field($user, 'status')->dropDownList(['10' => 'เปิดใช้งาน'],['prompt' => 'กรุณาเลือกสถานะของผู้ใช้']) ?>
+    <?php }?>
+    <?php } ?>
+    <?php }else{ ?>
+
+    <?php }?>
+
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lastname')->textInput(['maxlength' => true]) ?>

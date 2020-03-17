@@ -162,7 +162,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $user->load(Yii::$app->request->post())) {
             $user->password_hash = Yii::$app->security->generatePasswordHash($user->password_hash);
             $user->auth_key = Yii::$app->security->generateRandomString();
-            $user->status = 10;
+            //$user->status = 10;
             if($user->save()){
                 $file = UploadedFile::getInstance($model,'person_img');
                 if ($file->size != 0) {
