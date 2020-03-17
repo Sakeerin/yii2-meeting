@@ -48,6 +48,15 @@ use backend\modules\meeting\models\Uses;
         ]
     ]) ?>
 
+    <?php $auth = \Yii::$app->authManager;?>
+    <?php if (!$model->isNewRecord) { ?>
+    <?php if($auth->getRole('admin') && Yii::$app->user->identity->person->user_id == 1) {?>
+    <?= $form->field($model, 'status')->dropDownList(['0' => 'รออนุมัติ','1' => 'อนุมัติ','2' => 'ยกเลิก'],['prompt' => 'กรุณาเลือกสถานะการจองให้กับผู้จอง']) ?>
+    <?php }?>
+    <?php }else{ ?>
+
+    <?php }?>
+
     <?= $form->field($model, 'room_id')->dropDownList(ArrayHelper::map(Room::find()->all(),'id','name')) ?>
 
     <h4>รายการอุปกรณ์ที่จะใช้</h4>

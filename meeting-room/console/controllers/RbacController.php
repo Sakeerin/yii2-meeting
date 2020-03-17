@@ -127,6 +127,11 @@ class RbacController extends Controller
         $meeting_report_report3->description = 'ตารางรายงานการจองห้องประชุมแบ่งรายเดือน';
         $auth->add($meeting_report_report3);
 
+        // gii
+        $gii = $auth->createPermission('gii/default/view');
+        $gii->description = 'yii generator';
+        $auth->add($gii);
+
         echo 'Create Permission success!';
 
     }
@@ -171,6 +176,9 @@ class RbacController extends Controller
         $meeting_report_report2 = $auth->createPermission('meeting/report/report2');
         $meeting_report_report3 = $auth->createPermission('meeting/report/report3');
 
+        // gii
+        $gii = $auth->createPermission('gii/default/view');
+
 
         //assign role
         $user = $auth->createRole('user');
@@ -205,6 +213,7 @@ class RbacController extends Controller
         $auth->addChild($admin,$meeting_room_update);
         $auth->addChild($admin,$meeting_room_delete);
         $auth->addChild($admin,$meeting_room_view);
+        $auth->addChild($admin,$gii);
         $auth->addChild($admin,$user);
 
         echo 'Create Role success!';
