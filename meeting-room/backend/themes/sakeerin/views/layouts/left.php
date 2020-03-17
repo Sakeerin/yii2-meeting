@@ -45,30 +45,66 @@ use yii\helpers\Html;
                                     ['label' => 'รายงาน3', 'icon' => 'file-pdf-o', 'url' => ['/meeting/report/report3'],],
                                 ],
                             ],
-                            [
-                                'label' => 'ข้อมูลพื้นฐาน',
-                                'icon' => 'cogs',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'ห้องประชุม', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
-                                    ['label' => 'อุปกรณ์', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
-                                ],
-                            ],
+                            // [
+                            //     'label' => 'ข้อมูลพื้นฐาน',
+                            //     'icon' => 'cogs',
+                            //     'url' => '#',
+                            //     'items' => [
+                            //         ['label' => 'ห้องประชุม', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
+                            //         ['label' => 'อุปกรณ์', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
+                            //     ],
+                            // ],
                         ],
                     ],
+                    // [
+                    //     'label' => 'ระบบงานบุคคล',
+                    //     'icon' => 'cogs',
+                    //     'url' => '#',
+                    //     'items' => [
+                    //         ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
+                    //         ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
+                    //         ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],        
+                    //     ],
+                    // ],
+                ],
+            ]
+        ) ?>
+
+        <?php $auth = \Yii::$app->authManager;?>
+
+        <?php if($auth->getRole('admin') && Yii::$app->user->identity->person->user_id == 1) {?>
+        <?= dmstr\widgets\Menu::widget(
+            [
+                'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
+                'items' => [
+                    // ['label' => 'เมนู', 'options' => ['class' => 'header']],
+                    // ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/site/index']],
+                    //['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
+                    ['label' => 'เข้าสู่ระบบ', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'ระบบงานบุคคล',
-                        'icon' => 'cogs',
+                        'icon' => 'users',
                         'url' => '#',
                         'items' => [
                             ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
                             ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
                             ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],        
                         ],
+                        
+                    ],
+                    [
+                        'label' => 'ข้อมูลพื้นฐาน',
+                        'icon' => 'cogs',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'ห้องประชุม', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
+                            ['label' => 'อุปกรณ์', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
+                        ],
                     ],
                 ],
             ]
         ) ?>
+        <?php }?>
 
     </section>
 

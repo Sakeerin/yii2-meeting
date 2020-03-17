@@ -127,10 +127,33 @@ class RbacController extends Controller
         $meeting_report_report3->description = 'ตารางรายงานการจองห้องประชุมแบ่งรายเดือน';
         $auth->add($meeting_report_report3);
 
+
+        // assignment
+        $assignment_assignment_index = $auth->createPermission('assignment/assignment/index');
+        $assignment_assignment_index->description = 'รายการการกำหนดบทบาท';
+        $auth->add($assignment_assignment_index);
+
+        $assignment_assignment_create = $auth->createPermission('assignment/assignment/create');
+        $assignment_assignment_create->description = 'กำหนดบทบาท';
+        $auth->add($assignment_assignment_create);
+
+        $assignment_assignment_update = $auth->createPermission('assignment/assignment/update');
+        $assignment_assignment_update->description = 'แก้ไขการกำหนดบทบาท';
+        $auth->add($assignment_assignment_update);
+
+        $assignment_assignment_delete = $auth->createPermission('assignment/assignment/delete');
+        $assignment_assignment_delete->description = 'ลบกำหนดบทบาท';
+        $auth->add($assignment_assignment_delete);
+
+        $assignment_assignment_view = $auth->createPermission('assignment/assignment/view');
+        $assignment_assignment_view->description = 'ดูรายละเอียดการกำหนดบทบาท';
+        $auth->add($assignment_assignment_view);
+
         // gii
         $gii = $auth->createPermission('gii/default/view');
         $gii->description = 'yii generator';
         $auth->add($gii);
+
 
         echo 'Create Permission success!';
 
@@ -179,6 +202,13 @@ class RbacController extends Controller
         // gii
         $gii = $auth->createPermission('gii/default/view');
 
+        // assignment
+        $assignment_assignment_index = $auth->createPermission('assignment/assignment/index');
+        $assignment_assignment_create = $auth->createPermission('assignment/assignment/create');
+        $assignment_assignment_update = $auth->createPermission('assignment/assignment/update');
+        $assignment_assignment_delete = $auth->createPermission('assignment/assignment/delete');
+        $assignment_assignment_view = $auth->createPermission('assignment/assignment/view');
+
 
         //assign role
         $user = $auth->createRole('user');
@@ -214,6 +244,11 @@ class RbacController extends Controller
         $auth->addChild($admin,$meeting_room_delete);
         $auth->addChild($admin,$meeting_room_view);
         $auth->addChild($admin,$gii);
+        $auth->addChild($admin,$assignment_assignment_index); // assignment
+        $auth->addChild($admin,$assignment_assignment_create);
+        $auth->addChild($admin,$assignment_assignment_update);
+        $auth->addChild($admin,$assignment_assignment_delete);
+        $auth->addChild($admin,$assignment_assignment_view);
         $auth->addChild($admin,$user);
 
         echo 'Create Role success!';

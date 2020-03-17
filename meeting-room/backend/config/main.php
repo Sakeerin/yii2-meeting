@@ -18,6 +18,9 @@ return [
         'meeting' => [
             'class' => 'backend\modules\meeting\Module',
         ], 
+        'assignment' => [
+            'class' => 'backend\modules\assignment\Module',
+        ],
     ],
     'components' => [
         'request' => [
