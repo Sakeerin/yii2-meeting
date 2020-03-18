@@ -42,6 +42,8 @@ class RoomController extends Controller
                             $route = "$module/$controller/$action";
                             if (Yii::$app->user->can($route)) {
                                 return true;
+                            }else{
+                                Yii::$app->session->setFlash('warning', 'You do not have permission to use this page.');
                             }
                         }
                     ]
@@ -112,12 +114,16 @@ class RoomController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldAvatar = $model->photo;
 
         if ($model->load(Yii::$app->request->post())) {
             $file = UploadedFile::getInstance($model,'room_img');
             if (isset($file->size) && $file->size !==0) {
                 $model->photo = $file->name;
                 $file->saveAs('uploads/room/'.$file->name);
+                if ($oldAvatar != 0) {
+                    @unlink('uploads/room/'.$oldAvatar);
+                }
             }
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);

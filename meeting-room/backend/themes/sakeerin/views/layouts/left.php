@@ -86,7 +86,7 @@ use yii\helpers\Html;
                         'icon' => 'users',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
+                            //['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
                             ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
                             ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],        
                         ],

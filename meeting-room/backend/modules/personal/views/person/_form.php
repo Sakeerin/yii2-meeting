@@ -24,11 +24,11 @@ use yii\helpers\ArrayHelper;
 
     <?php $auth = \Yii::$app->authManager;?>
     <?php if (!$model->isNewRecord) { ?>
-    <?php  if ($user->status == 9) { ?>
-    <?php if($auth->getRole('admin')) {?>
-    <?= $form->field($user, 'status')->dropDownList(['10' => 'เปิดใช้งาน'],['prompt' => 'กรุณาเลือกสถานะของผู้ใช้']) ?>
+
+    <?php if($auth->getRole('admin') && Yii::$app->user->identity->person->user_id == 1) {?>
+    <?= $form->field($user, 'status')->dropDownList(['10' => 'เปิดใช้งาน','9' => 'ปิดใช้งาน'],['prompt' => 'กรุณาเลือกสถานะของผู้ใช้']) ?>
     <?php }?>
-    <?php } ?>
+
     <?php }else{ ?>
 
     <?php }?>

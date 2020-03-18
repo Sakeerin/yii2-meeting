@@ -27,6 +27,8 @@ class ReportController extends \yii\web\Controller
                             $route = "$module/$controller/$action";
                             if (Yii::$app->user->can($route)) {
                                 return true;
+                            }else{
+                                Yii::$app->session->setFlash('warning', 'You do not have permission to use this page.');
                             }
                         }
                     ]
