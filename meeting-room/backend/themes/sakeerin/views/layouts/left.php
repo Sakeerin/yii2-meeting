@@ -88,7 +88,8 @@ use yii\helpers\Html;
                         'items' => [
                             //['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
                             ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
-                            ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],        
+                            ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],    
+                            ['label' => 'กำหนดบทบาท', 'icon' => 'list', 'url' => ['/assignment/default/index'],],    
                         ],
                         
                     ],

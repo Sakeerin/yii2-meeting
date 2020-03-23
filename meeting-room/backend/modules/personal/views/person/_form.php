@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Department;
 use yii\helpers\ArrayHelper;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
@@ -26,7 +27,9 @@ use yii\helpers\ArrayHelper;
     <?php if (!$model->isNewRecord) { ?>
 
     <?php if($auth->getRole('admin') && Yii::$app->user->identity->person->user_id == 1) {?>
+
     <?= $form->field($user, 'status')->dropDownList(['10' => 'เปิดใช้งาน','9' => 'ปิดใช้งาน'],['prompt' => 'กรุณาเลือกสถานะของผู้ใช้']) ?>
+
     <?php }?>
 
     <?php }else{ ?>
