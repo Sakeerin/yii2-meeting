@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
     <?php } ?>
 
     <div class="form-group">
-        <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

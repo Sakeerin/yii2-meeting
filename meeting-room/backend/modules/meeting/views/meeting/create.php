@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\meeting\models\Meeting */
 
-$this->title = 'จองห้องประชุม';
+$this->title = 'Booking';
 $this->params['breadcrumbs'][] = ['label' => 'การจองห้องประชุม', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

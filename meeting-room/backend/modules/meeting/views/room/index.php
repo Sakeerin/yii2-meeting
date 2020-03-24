@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\modules\meeting\models\RoomSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'ห้องประชุม';
+$this->title = 'meeting room';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-warning box-solid">
@@ -15,13 +15,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <h3 class="box-title"><i class="fa fa-home"></i> <?= Html::encode($this->title) ?></h3>
     </div>
     <div class="box-body">
-    <p>
-        <?= Html::a('เพิ่มห้องประชุม', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <p>
+            <?= Html::a('Add meeting room', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+        <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [

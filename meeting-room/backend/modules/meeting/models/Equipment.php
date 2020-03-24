@@ -46,10 +46,10 @@ class Equipment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'equipment' => 'อุปกรณ์',
-            'description' => 'รายละเอียด',
-            'photo' => 'รูปอุปกรณ์',
-            'equip_img' => 'รูปอุปกรณ์',
+            'equipment' => 'Name',
+            'description' => 'Description',
+            'photo' => 'Photo',
+            'equip_img' => 'Photo',
         ];
     }
 

@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="box-body">
         <p>
-            <?= Html::a('จองห้องประชุม', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Booking', ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

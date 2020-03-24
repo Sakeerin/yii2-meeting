@@ -23,26 +23,26 @@ use yii\helpers\Html;
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'เมนู', 'options' => ['class' => 'header']],
-                    ['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/site/index']],
+                    ['label' => '菜单', 'options' => ['class' => 'header']],
+                    ['label' => '主页面', 'icon' => 'home', 'url' => ['/site/index']],
                     //['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'เข้าสู่ระบบ', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'ระบบจองห้องประชุม',
+                        'label' => '预订管理',
                         'icon' => 'calendar',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'ปฏิทินการจอง', 'icon' => 'calendar', 'url' => ['/meeting/default/index'],],
-                            ['label' => 'จองห้องประชุม', 'icon' => 'calendar-check-o', 'url' => ['/meeting/meeting/create'],],
-                            ['label' => 'รายการจองห้องประชุม', 'icon' => 'list', 'url' => ['/meeting/meeting/index'],],
+                            ['label' => '预订日历', 'icon' => 'calendar', 'url' => ['/meeting/default/index'],],
+                            ['label' => '预订会议室', 'icon' => 'calendar-check-o', 'url' => ['/meeting/meeting/create'],],
+                            ['label' => '预订名单', 'icon' => 'list', 'url' => ['/meeting/meeting/index'],],
                             [
-                                'label' => 'รายงาน',
+                                'label' => '报告',
                                 'icon' => 'book',
                                 'url' => '#',
                                 'items' => [
-                                    ['label' => 'รายงาน1', 'icon' => 'bar-chart', 'url' => ['/meeting/report/report1'],],
-                                    ['label' => 'รายงาน2', 'icon' => 'line-chart', 'url' => ['/meeting/report/report2'],],
-                                    ['label' => 'รายงาน3', 'icon' => 'file-pdf-o', 'url' => ['/meeting/report/report3'],],
+                                    ['label' => '每个房间的报告', 'icon' => 'bar-chart', 'url' => ['/meeting/report/report1'],],
+                                    ['label' => '每月总结报告', 'icon' => 'line-chart', 'url' => ['/meeting/report/report2'],],
+                                    ['label' => '导出pdf', 'icon' => 'file-pdf-o', 'url' => ['/meeting/report/report3'],],
                                 ],
                             ],
                             // [
@@ -82,24 +82,24 @@ use yii\helpers\Html;
                     //['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'เข้าสู่ระบบ', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'ระบบงานบุคคล',
+                        'label' => '人员管理',
                         'icon' => 'users',
                         'url' => '#',
                         'items' => [
                             //['label' => 'หน้าหลัก', 'icon' => 'home', 'url' => ['/personal/default/index'],],
-                            ['label' => 'เพิ่มบุคคล', 'icon' => 'user', 'url' => ['/personal/person/create'],],
-                            ['label' => 'รายการบุคคล', 'icon' => 'list', 'url' => ['/personal/person/index'],],    
-                            ['label' => 'กำหนดบทบาท', 'icon' => 'list', 'url' => ['/assignment/default/index'],],    
+                            ['label' => '添加人员', 'icon' => 'user', 'url' => ['/personal/person/create'],],
+                            ['label' => '人员名单', 'icon' => 'list', 'url' => ['/personal/person/index'],],    
+                            ['label' => '分配角色', 'icon' => 'cog', 'url' => ['/assignment/default/index'],],    
                         ],
                         
                     ],
                     [
-                        'label' => 'ข้อมูลพื้นฐาน',
+                        'label' => '基本信息管理',
                         'icon' => 'cogs',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'ห้องประชุม', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
-                            ['label' => 'อุปกรณ์', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
+                            ['label' => '会议室', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
+                            ['label' => '设备', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
                         ],
                     ],
                 ],

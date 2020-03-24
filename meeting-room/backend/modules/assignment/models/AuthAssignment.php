@@ -3,6 +3,7 @@
 namespace backend\modules\assignment\models;
 
 use Yii;
+use common\models\User;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -44,8 +45,8 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'item_name' => 'Item Name',
-            'user_id' => 'User ID',
+            'item_name' => 'Role Name',
+            'user_id' => 'Username',
             'created_at' => 'Created At',
         ];
     }
@@ -58,5 +59,10 @@ class AuthAssignment extends \yii\db\ActiveRecord
     public function getItemName()
     {
         return $this->hasOne(AuthItem::className(), ['name' => 'item_name']);
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

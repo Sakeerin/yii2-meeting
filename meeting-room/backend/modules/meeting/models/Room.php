@@ -47,11 +47,11 @@ class Room extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'ชื่อห้อง',
-            'description' => 'รายละเอียด',
-            'photo' => 'รูปภาพ',
-            'color' => 'สีประจำห้อง',
-            'room_img' => 'รูปภาพ',
+            'name' => 'Room name',
+            'description' => 'Description',
+            'photo' => 'Photo',
+            'color' => 'Color',
+            'room_img' => 'Photo',
         ];
     }
 

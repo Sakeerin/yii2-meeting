@@ -67,15 +67,15 @@ class Meeting extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'เรื่อง',
-            'description' => 'รายละเอียด',
-            'date_start' => 'เริ่ม',
-            'date_end' => 'สิ้นสุด',
-            'created_at' => 'เพิ่มเมื่อ',
-            'updated_at' => 'แก้ไขเมื่อ',
-            'room_id' => 'ห้องประชุม',
-            'user_id' => 'ผู้จอง',
-            'status' => 'สถานะการจอง',
+            'title' => '题目',
+            'description' => '详情',
+            'date_start' => '开始日期',
+            'date_end' => '结束日期',
+            'created_at' => '添加于',
+            'updated_at' => '修改于',
+            'room_id' => '会议室',
+            'user_id' => '订座',
+            'status' => '预订状态',
         ];
     }
 

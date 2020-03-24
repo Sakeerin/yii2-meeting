@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\meeting\models\Equipment */
 
-$this->title = 'เพิ่มอุปกรณ์';
-$this->params['breadcrumbs'][] = ['label' => 'อุปกรณ์', 'url' => ['index']];
+$this->title = 'Add equipment';
+$this->params['breadcrumbs'][] = ['label' => 'equipment', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-danger box-solid">

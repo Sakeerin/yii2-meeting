@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\meeting\models\Room */
 
-$this->title = 'เพิ่มห้องประชุม';
-$this->params['breadcrumbs'][] = ['label' => 'ห้องประชุม', 'url' => ['index']];
+$this->title = 'Add meeting room';
+$this->params['breadcrumbs'][] = ['label' => 'meeting room', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-warning box-solid">

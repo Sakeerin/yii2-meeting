@@ -18,8 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="box-body">
         <p>
-            <?= Html::a('แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('ลบ', ['delete', 'id' => $model->id], [
+            <?= Html::a('update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]) ?>
-        <h4>รายการอุปกรณ์ที่ใช้</h4>
+        <h4>List of equipment</h4>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [

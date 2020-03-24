@@ -59,7 +59,7 @@ use backend\modules\meeting\models\Uses;
 
     <?= $form->field($model, 'room_id')->dropDownList(ArrayHelper::map(Room::find()->all(),'id','name')) ?>
 
-    <h4>รายการอุปกรณ์ที่จะใช้</h4>
+    <h4>设备名单</h4>
 
     <?php foreach($equipments as $e) {
         if (!$model->isNewRecord) {
@@ -81,7 +81,7 @@ use backend\modules\meeting\models\Uses;
     </label>
     <?php }?>
     <div class="text-right">
-        <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

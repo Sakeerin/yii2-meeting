@@ -15,9 +15,9 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'item_name')->dropDownList(['admin' => 'Admin','user' => 'User'],['prompt' => 'กรุณาเลือกบทบาทของผู้ใช้']) ?>
+    <?= $form->field($model, 'item_name')->dropDownList(['admin' => 'Admin','user' => 'User'],['prompt' => 'please select role...']) ?>
 
-    <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->all(),'id','username')) ?>
+    <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(User::find()->all(),'id','username'),['prompt' => 'please select user...']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

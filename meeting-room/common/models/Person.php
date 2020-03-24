@@ -56,13 +56,13 @@ class Person extends \yii\db\ActiveRecord
     {
         return [
             'user_id' => 'User ID',
-            'firstname' => 'ชื่อ',
-            'lastname' => 'นามสกุล	',
-            'photo' => 'รูปภาพ',
-            'address' => 'ที่อยู่',
-            'tel' => 'เบอร์โทร',
-            'department_id' => 'ฝ่าย',
-            'person_img' => 'รูปภาพ',
+            'firstname' => 'Firstname',
+            'lastname' => 'Lastname',
+            'photo' => 'Photo',
+            'address' => 'Address',
+            'tel' => 'Phone number',
+            'department_id' => 'Department',
+            'person_img' => 'Photo',
         ];
     }
 

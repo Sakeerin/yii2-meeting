@@ -42,7 +42,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'username' => 'Username',
             'password_hash' => 'Password',
-            'email' => 'อีเมลล์'
+            'email' => 'E-mail'
         ];
     }
 

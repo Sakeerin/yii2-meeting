@@ -18,10 +18,12 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        $model = new AuthAssignment();
         $searchModel = new AuthAssignmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -31,7 +31,7 @@ use yii\helpers\Html;
                         <li class="user-header">
                             <?= Html::img('uploads/person/'.Yii::$app->user->identity->person->photo,['class' => 'img-circle', 'alt' => Yii::$app->user->identity->person->firstname.' '.Yii::$app->user->identity->person->lastname, 'width' => 150,'height' => 200])?>
                             <p>
-                                Alexander Pierce - Web Developer
+                                <?= Yii::$app->user->identity->person->firstname.' '.Yii::$app->user->identity->person->lastname?>
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -59,7 +59,7 @@ use yii\helpers\Html;
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
-                                    'ออกจากระบบ',
+                                    'Log out',
                                     ['/site/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>

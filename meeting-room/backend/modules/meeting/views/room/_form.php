@@ -10,7 +10,7 @@ use kartik\color\ColorInput;
 ?>
 
 <div class="room-form">
-    
+
     <?php $form = ActiveForm::begin([
          'options' => [
              'enctype' => 'multipart/form-data'
@@ -24,7 +24,7 @@ use kartik\color\ColorInput;
     <?= $form->field($model, 'room_img')->fileInput() ?>
 
     <?php if (!$model->isNewRecord) {?>
-        <?= Html::img('uploads/room/'.$model->photo,['class'=>'img-responsive thumbnail','width' => 250]); ?>
+    <?= Html::img('uploads/room/'.$model->photo,['class'=>'img-responsive thumbnail','width' => 250]); ?>
     <?php 
     }
     ?>
@@ -34,7 +34,7 @@ use kartik\color\ColorInput;
     ]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

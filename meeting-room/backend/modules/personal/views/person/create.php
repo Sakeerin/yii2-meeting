@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
 
-$this->title = 'เพิ่มบุคลากร';
-$this->params['breadcrumbs'][] = ['label' => 'บุคลากร', 'url' => ['index']];
+$this->title = 'Add personnel';
+$this->params['breadcrumbs'][] = ['label' => 'personnel', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="box box-success box-solid">
@@ -17,7 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $this->render('_form', [
         'model' => $model,
         'user' => $user,
-        'assign' => $assign,
     ]) ?>
     </div>
 
