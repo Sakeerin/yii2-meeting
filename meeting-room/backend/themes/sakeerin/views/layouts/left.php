@@ -98,8 +98,8 @@ use yii\helpers\Html;
                         'icon' => 'cogs',
                         'url' => '#',
                         'items' => [
-                            ['label' => '会议室', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
-                            ['label' => '设备', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
+                            ['label' => '会议室管理', 'icon' => 'building-o', 'url' => ['/meeting/room/index'],],
+                            ['label' => '设备管理', 'icon' => 'cog', 'url' => ['/meeting/equipment/index'],],
                         ],
                     ],
                 ],
